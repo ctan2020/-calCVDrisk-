@@ -5,23 +5,41 @@
     <title> "test"</title>
 </head>
 <body>
- 
-<form>
-    Number 1: <input type="text" name="num1"><br>
-    Number 2: <input type="text" name="num2"><br>
-    Sum: <input type="text" name="sum"><br>
-    <input type="button" value="Sum" onclick="calcSum()">
-</form>
- 
-<script>
-    function calcSum() {
-        let num1 = document.getElementsByName("num1")[0].value;
-        let num2 = document.getElementsByName("num2")[0].value;
-        let sum = Number(num1) + Number(num2);
-        document.getElementsByName("sum")[0].value = sum;
-    }
-</script>
- 
+<div class="container">
+         <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 well">
+               <h4 class="text-center">Live Sum of values using jQuery</h4> <hr/>
+               <form class="form-horizontal">
+                  <div class="form-group">
+                     <label class="control-label col-sm-2" for="value1">Value 1</label>
+                     <div class="col-sm-10">
+                        <input type="number" name="value1" id="value1" class="form-control" min="0" placeholder="Enter first value" required />
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm-2" for="value2">Value 2</label>
+                     <div class="col-sm-10">
+                        <input type="number" name="value2" id="value2" class="form-control" min="0" placeholder="Enter second value" required />
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm-2" for="sum">Sum</label>
+                     <div class="col-sm-10">
+                        <input type="number" name="sum" id="sum" class="form-control" readonly />
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+    
+ $(function(){
+            $('#value1, #value2').keyup(function(){
+               var value1 = parseFloat($('#value1').val()) || 0;
+               var value2 = parseFloat($('#value2').val()) || 0;
+               $('#sum').val(value1 + value2);
+            });
+         });
  
 </body>
 </html>
