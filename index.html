@@ -1,36 +1,21 @@
-
-
-function calcGrades() {
-
-  const val = this.value.toLowerCase().trim();
+<html>
+<head>
+</head>
+<body>
   
-  $("#grades tbody tr").each((i, TR) => {
-    let res;
-    const refs = $("td",TR).get().reduce((ob, TD, i) =>
-        [ob["c"+i] = parseFloat(TD.textContent), ob][1], {});
-        
-    try { res = eval(val.replace(/c\d+/g, $1 => refs[$1])).toFixed(2) } 
-    catch (err) { res = "-" }
-    
-    $(".final-grade",TR).text( res );
-  });
+<div style="text-align: center;padding: 10px">
+<label>数字:<input type="text" id="number" onchange="result()"/></label><br/><br/>
+<label>结果:<input type="text" id="number1" readonly="readonly"/></label>
+</div>
+
+<script type="text/javascript">
+function result(){
+
+var num = document.getElementById('number').value;
+
+document.getElementById('number1').value = num*7116-3460-1617;
 }
+</script> 
 
-$("#equation").on("input", calcGrades).trigger("input");
-
-<input id="equation" type="text" value="C1 + c2 * 0.5 + C3 * 0.8">
-<table id="grades">
-  <thead>
-    <tr>
-        <th>ID</th><th>Homework 1</th><th>Homework 2</th><th>Exam pts</th><th>Final</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td>8.75</td><td>7.60</td><td>55.50</td><td class="final-grade">-</td></tr>
-    <tr><td>2</td><td>9.00</td><td>4.50</td><td>63.00</td><td class="final-grade">-</td></tr>
-    <tr><td>3</td><td>7.75</td><td>7.40</td><td>45.50</td><td class="final-grade">-</td></tr>
-    <tr><td>4</td><td>0</td><td>0.0</td><td>0</td><td class="final-grade">-</td></tr>
-    <tr><td>4</td><td>foo</td><td>bar</td><td>baz</td><td class="final-grade">-</td></tr>
-  </tbody>
-</table>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ </body>
+</html>
